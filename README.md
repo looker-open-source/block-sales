@@ -1,4 +1,4 @@
-# Salesforce Block
+# Sales Block
 
 This repository contains views andexplores used for the Sales Block dashboards. 
 There are 3 dashboards that come with this block: Sales Overivew, Pipeline Management and Sales Rep Performance, with each dashboard focusing on a specific area of the sales process.
