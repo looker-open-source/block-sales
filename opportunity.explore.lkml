@@ -20,7 +20,7 @@ explore: opportunity_core {
   }
   join: opportunity_owner {
     from: user
-    type: full_outer # Needed full outer here since we want to include reps regardless of whether or not they own an opp
+    type: full_outer # Full outer here since we want to include reps regardless of whether or not they own an opp
     sql_on: ${opportunity.owner_id} = ${opportunity_owner.id} ;;
     relationship: many_to_one
   }
