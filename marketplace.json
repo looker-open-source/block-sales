@@ -1,0 +1,35 @@
+{
+  "label": "Salesforce",
+  "category_label": "Models",
+  "branding": {
+    "image_uri": "",
+    "tagline": "This Block ... "
+  },
+
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    },
+    "SCHEMA_NAME": {
+      "label": "Schema Name"
+    },
+    "CONFIG_PROJECT_NAME": {
+      "label": "Config Project Name"
+    }
+  },
+  "models": [
+    {
+      "name": "block-sales",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ],
+  "auxiliary_projects": [
+    {
+      "git_uri": "git://github.com/looker/block-salesforce-config.git",
+      "git_ref": "[INSERT HASH]",
+      "label": "Salesforce",
+      "constant_name": "CONFIG_PROJECT_NAME"
+    }
+  ]
+}
