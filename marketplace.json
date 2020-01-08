@@ -2,8 +2,8 @@
   "label": "Salesforce",
   "category_label": "Models",
   "branding": {
-    "image_uri": "",
-    "tagline": "This Block ... "
+    "image_uri": "https://marketplace-api.looker.com/block-icons/salesforce_icon.png",
+    "tagline": "Understand performance, prioritize opportunities, and close more deals with Looker's Salesforce Block"
   },
 
   "constants": {
@@ -11,8 +11,8 @@
       "label": "Connection Name",
       "value_constraint": "connection"
     },
-    "SCHEMA_NAME": {
-      "label": "Schema Name"
+    "SALESFORCE_SCHEMA": {
+      "label": "Salesforce Schema Name"
     },
     "CONFIG_PROJECT_NAME": {
       "label": "Config Project Name"
@@ -20,15 +20,15 @@
   },
   "models": [
     {
-      "name": "block-sales",
+      "name": "block_sales",
       "connection_constant": "CONNECTION_NAME"
     }
   ],
   "auxiliary_projects": [
     {
-      "git_uri": "git://github.com/looker/block-salesforce-config.git",
-      "git_ref": "[INSERT HASH]",
-      "label": "Salesforce",
+      "git_uri": "git://github.com/looker/block-sales-config.git",
+      "git_ref": "",
+      "label": "Salesforce Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
   ]
