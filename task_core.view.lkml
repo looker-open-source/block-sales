@@ -8,8 +8,7 @@ view: task {
 
 view: task_core {
   extension: required
-#   sql_table_name: @{SCHEMA_NAME}.opportunity_history ;;
-  sql_table_name: salesforce.user ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.task ;;
 
   dimension: id {
     primary_key: yes

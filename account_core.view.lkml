@@ -7,8 +7,7 @@ view: account {
 
 view: account_core {
   extension: required #add this if you re-generate this file
-#   sql_table_name: @{SCHEMA_NAME}.account ;;
-  sql_table_name: salesforce.account ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.account ;;
 
 ###   Dimensions:
 

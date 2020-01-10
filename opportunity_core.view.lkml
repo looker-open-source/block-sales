@@ -7,8 +7,7 @@ view: opportunity {
 
 view: opportunity_core {
   extension: required #add this if you re-generate this file
-#   sql_table_name: @{SCHEMA_NAME}.opportunity ;;
-  sql_table_name: salesforce.user ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.opportunity ;;
 
   dimension: id {
     primary_key: yes
@@ -602,7 +601,6 @@ view: opportunity_core {
   measure: average_amount_won {
     label: "Average Amount Won"
     type: average
-    hidden: yes
     sql: ${amount} ;;
     filters: {
       field: is_won
@@ -635,7 +633,6 @@ view: opportunity_core {
     label: "Pipeline Amount"
     type: sum
     sql: ${amount} ;;
-    hidden: yes
     filters: {
       field: is_closed
       value: "No"
@@ -648,6 +645,7 @@ view: opportunity_core {
     drill_fields: [opp_drill_set_open*]
     description: "All open Pipeline Opps"
   }
+
 
   # May want to revisit the name here since we're using "is_included_in_quota" rather than "is_new_business"
   # measure: total_pipeline_new_business_amount {
@@ -727,16 +725,15 @@ view: opportunity_core {
     drill_fields: [opp_drill_set_closed*]
   }
 
-  # measure: win_percentage {
-  #   type: number
-  #   sql: ${total_closed_won_amount} / NULLIF(${count_new_business_closed},0) ;;
-  #   value_format_name: percent_1
-  # }
+  measure: win_percentage {
+    type: number
+    sql: ${count_won} / NULLIF(${count_closed},0) ;;
+    value_format_name: percent_1
+  }
 
   measure: count_won {
     label: "Number of Opportunities Won"
     type: count
-    hidden: yes
     filters: {
       field: is_won
       value: "Yes"

@@ -7,8 +7,7 @@ view: lead {
 
 view: lead_core {
   extension: required #add this if you re-generate this file
-#   sql_table_name: @{SCHEMA_NAME}.lead ;;
-  sql_table_name: salesforce.lead ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.lead ;;
 
   dimension: id {
     primary_key: yes

@@ -7,8 +7,7 @@ view: contact {
 
 view: contact_core {
   extension: required #add this if you re-generate this file
-#   sql_table_name: @{SCHEMA_NAME}.contact ;;
-  sql_table_name: salesforce.user ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.contact ;;
 
   dimension: account_id {
     type: string
