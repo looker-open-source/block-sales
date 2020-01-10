@@ -13,7 +13,7 @@ constant: CONFIG_PROJECT_NAME {
 }
 
 constant: CONNECTION_NAME {
-  value: "looker_application"
+  value: "app-salesforce"
   export: override_required
 }
 

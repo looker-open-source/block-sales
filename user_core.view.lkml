@@ -8,8 +8,7 @@ view: user {
 
 view: user_core {
   extension: required
-#   sql_table_name: @{SCHEMA_NAME}.user ;;
-  sql_table_name: salesforce.user ;;
+  sql_table_name: @{SALESFORCE_SCHEMA}.user ;;
 
   dimension: id {
     primary_key: yes
@@ -491,6 +490,10 @@ view: user_core {
     hidden: yes
   }
 
+  dimension: manager {
+    type: string
+    sql: ${manager.name} ;;
+  }
 
 
   ### Measure
