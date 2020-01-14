@@ -235,11 +235,10 @@ view: opportunity_core {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
-    html:
-    <a href="https://{{ salesforce_domain_config._sql }}/{{ opportunity.id._value }}" target="_new">
-    <img src="https://www.google.com/s2/favicons?domain=www.salesforce.com" height=16 width=16></a>
-    {{ linked_value }};;
-
+    link: {
+      url:"http://@{SALESFORCE_DOMAIN}/{{ opportunity.id._value }}"
+      label: "View in Salesforce"
+    }
     }
 
     dimension: next_step {
@@ -265,10 +264,10 @@ view: opportunity_core {
       hidden: yes
     }
 
-    dimension: source {
-      type: string
-      sql: ${lead_source} ;;
-    }
+#     dimension: source {
+#       type: string
+#       sql: ${lead_source} ;;
+#     }
 
     dimension: stage_name {
       type: string
@@ -338,6 +337,28 @@ view: opportunity_core {
       }
       else: "Amount Unspecified"
     }
+    order_by_field: sort_deal_size
+  }
+
+  dimension: sort_deal_size {
+    type: number
+    hidden: yes
+    sql: CASE
+         WHEN ${amount} < 10000
+         THEN 1
+         WHEN ${amount} < 50000
+         THEN 2
+         WHEN ${amount} < 100000
+         THEN 3
+        WHEN  ${amount} < 500000
+         THEN 4
+         WHEN ${amount} < 1000000
+         THEN 5
+         WHEN ${amount} > 1000000
+         THEN 6
+        ELSE
+          7
+      END;;
   }
 
   dimension: id_url {
@@ -423,11 +444,9 @@ view: opportunity_core {
   dimension: name_display {
     type: string
     sql: ${name} ;;
-
     link: {
-      label: "Open in Salesforce"
-      url: "https://{{ salesforce_domain_config._sql }}/{{ opportunity.id._value }}"
-      icon_url: "https://www.google.com/s2/favicons?domain=www.salesforce.com"
+      url:"http://@{SALESFORCE_DOMAIN}/{{ opportunity.id._value }}"
+      label: "View in Salesforce"
     }
     }
 

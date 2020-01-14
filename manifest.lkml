@@ -5,6 +5,9 @@ local_dependency: {
   override_constant: SALESFORCE_SCHEMA {
     value: "@{SALESFORCE_SCHEMA}"
   }
+  override_constant: SALESFORCE_DOMAIN {
+    value: "@{SALESFORCE_DOMAIN}"
+  }
 }
 
 constant: CONFIG_PROJECT_NAME {
@@ -18,6 +21,11 @@ constant: CONNECTION_NAME {
 }
 
 constant: SALESFORCE_SCHEMA {
+  value: "salesforce"
+  export: override_required
+}
+
+constant: SALESFORCE_DOMAIN {
   value: "salesforce"
   export: override_required
 }
