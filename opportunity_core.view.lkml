@@ -748,6 +748,7 @@ view: opportunity_core {
     type: number
     sql: ${count_won} / NULLIF(${count_closed},0) ;;
     value_format_name: percent_1
+    drill_fields: [name, amount, created_date, close_date]
   }
 
   measure: count_won {
