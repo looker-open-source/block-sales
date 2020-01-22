@@ -44,6 +44,11 @@ explore: opportunity_core {
     sql_on: ${opportunity.id} = ${task.what_id} ;;
     relationship: one_to_many
   }
+  join: owner_opp_sorted {
+    view_label: "Opportunity Owner"
+    sql_on: ${opportunity_owner.name} = ${owner_opp_sorted.name} ;;
+    relationship: one_to_one
+  }
   # join: opportunity_stage_history {
   #   sql_on:  ${opportunity.id} = ${opportunity_stage_history.opportunity_id} ;;
   #   relationship: one_to_one
