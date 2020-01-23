@@ -854,7 +854,7 @@ view: opportunity_core {
 
   measure: amount_per_rep {
     type: number
-    label: "Amount per Rep"
+    label: "Average Amount Won per Rep"
     sql: ${total_amount}/${opportunity_owner.count} ;;
     value_format_name: custom_amount_value_format
   }
