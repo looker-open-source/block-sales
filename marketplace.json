@@ -30,7 +30,7 @@
   "auxiliary_projects": [
     {
       "git_uri": "git://github.com/looker/block-sales-config.git",
-      "git_ref": "",
+      "git_ref": "92cb256ce88c0f19d5600f7384b1fd09cd1ea487",
       "label": "Salesforce Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
