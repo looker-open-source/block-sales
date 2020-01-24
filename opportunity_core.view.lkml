@@ -732,10 +732,10 @@ view: opportunity_core {
   }
 
   measure: total_closed_won_amount {
-    label: "TotalClosed Won Amount"
+    label: "Total Closed Won Amount"
     type: sum
     sql: ${amount}   ;;
-    hidden: yes
+    hidden: no
     filters: {
       field: is_won
       value: "Yes"

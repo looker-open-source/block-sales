@@ -6,6 +6,91 @@ view: user {
   extends: [user_config]
 }
 
+view: manager_facts {
+  extends: [manager_facts_config]
+}
+
+view: manager_facts_core {
+  derived_table: {
+    sql:
+      SELECT
+        manager.name  AS manager_name,
+        manager.id as id,
+        COUNT(DISTINCT(opportunity_owner.id)) AS number_of_reps,
+        COALESCE(SUM(CASE WHEN opportunity.is_won  THEN opportunity.amount    ELSE NULL END), 0) / COUNT(DISTINCT(opportunity_owner.id)) as total_won_per_rep,
+        COALESCE(SUM(CASE WHEN (NOT COALESCE(opportunity.is_closed , FALSE)) AND (opportunity.forecast_category IN ('Pipeline','Forecast','BestCase')) THEN opportunity.amount  ELSE NULL END), 0) / COUNT(DISTINCT(opportunity_owner.id)) as pipeline_per_rep,
+        (COUNT(CASE WHEN opportunity.is_won  THEN 1 ELSE NULL END)) / NULLIF((COUNT(CASE WHEN opportunity.is_closed  THEN 1 ELSE NULL END)),0)  AS win_percentage
+      FROM  salesforce.user  AS manager
+      JOIN salesforce.user  AS opportunity_owner ON  manager.id = opportunity_owner.manager_id
+      JOIN salesforce.opportunity  AS opportunity ON opportunity_owner.id = opportunity.owner_id
+
+      WHERE NOT opportunity.is_deleted
+      GROUP BY 1,2 ;;
+  }
+
+  dimension: id {
+    type: string
+    sql: ${TABLE}.id ;;
+    primary_key: yes
+    hidden: yes
+  }
+
+  dimension: manager_name {
+    type: string
+    sql: ${TABLE}.manager_name ;;
+  }
+
+  dimension: number_of_reps {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.number_of_reps ;;
+  }
+
+  dimension: win_percentage {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.win_percentage ;;
+  }
+
+  dimension: total_won_per_rep {
+    type: number
+    sql: ${TABLE}.total_won_per_rep ;;
+    hidden: yes
+    value_format_name: custom_amount_value_format
+  }
+
+  dimension: pipeline_per_rep {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.pipeline_per_rep ;;
+    value_format_name: custom_amount_value_format
+  }
+
+  measure: avg_pipeline_per_rep {
+    type: average
+    sql: ${pipeline_per_rep};;
+    value_format_name: custom_amount_value_format
+  }
+
+  measure: avg_amount_won_per_rep {
+    type: average
+    sql: ${total_won_per_rep};;
+    value_format_name: custom_amount_value_format
+  }
+
+  measure: avg_win_percentage_per_rep {
+    type: average
+    sql: ${win_percentage};;
+    value_format_name: percent_1
+  }
+
+  measure: total_number_of_reps {
+    type: sum
+    sql: ${number_of_reps} ;;
+  }
+
+}
+
 view: user_core {
   extension: required
   sql_table_name: @{SALESFORCE_SCHEMA}.user ;;

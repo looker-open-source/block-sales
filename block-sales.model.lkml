@@ -40,6 +40,10 @@ explore: opportunity_core {
     sql_on: ${opportunity_owner.manager_id} = ${manager.id};;
     relationship: many_to_one
   }
+  join: manager_facts {
+    sql_on: ${manager.id} = ${manager_facts.id};;
+    relationship: one_to_one
+  }
   join: task {
     sql_on: ${opportunity.id} = ${task.what_id} ;;
     relationship: one_to_many
