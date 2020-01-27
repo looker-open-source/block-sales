@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/lead.view"
-include: "//block-sales-config/lead.view"
+include: "//@{CONFIG_PROJECT_NAME}/lead.view"
 
 view: lead {
   extends: [lead_config]

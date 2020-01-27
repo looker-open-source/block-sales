@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/account.view"
-include: "//block-sales-config/account.view"
+include: "//@{CONFIG_PROJECT_NAME}/account.view"
 
 view: account {
   extends: [account_config]
