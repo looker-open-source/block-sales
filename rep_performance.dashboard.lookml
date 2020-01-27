@@ -45,7 +45,7 @@
       Sales Rep: opportunity_owner.name
     row: 2
     col: 0
-    width: 7
+    width: 6
     height: 4
   - title: Lifetime Bookings
     name: Lifetime Bookings
@@ -69,7 +69,7 @@
     listen:
       Sales Rep: opportunity_owner.name
     row: 6
-    col: 7
+    col: 6
     width: 6
     height: 4
   - title: Closed Won Opps
@@ -101,7 +101,7 @@
     listen:
       Sales Rep: opportunity_owner.name
     row: 2
-    col: 7
+    col: 6
     width: 6
     height: 4
   - title: Pipeline QTD
@@ -136,7 +136,7 @@
       Sales Rep: opportunity_owner.name
     row: 6
     col: 0
-    width: 7
+    width: 6
     height: 4
   - title: Biggest Wins
     name: Biggest Wins
@@ -323,7 +323,7 @@
     series_types: {}
     listen:
       Sales Rep: opportunity_owner.name
-    row: 35
+    row: 25
     col: 0
     width: 24
     height: 7
@@ -393,7 +393,7 @@
       opportunity_history_days_in_current_stage.most_recent_stage_change_date, opportunity.days_open]
     listen:
       Sales Rep: opportunity_owner.name
-    row: 28
+    row: 18
     col: 0
     width: 24
     height: 7
@@ -457,17 +457,21 @@
     name: Cumulative Bookings (QTD)
     model: block-sales
     explore: opportunity
-    type: looker_area
-    fields: [opportunity.close_date, opportunity.total_amount]
+    type: looker_column
+    fields: [opportunity.total_amount, opportunity.close_date]
+    fill_fields: [opportunity.close_date]
     filters:
-      opportunity.close_date: this fiscal quarter
-      opportunity_owner.manager: ''
+      opportunity.close_date: 1 quarters
       opportunity.is_won: 'Yes'
+      opportunity_owner.name: Olivia Winter
     sorts: [opportunity.close_date]
     limit: 500
     column_limit: 50
     dynamic_fields: [{table_calculation: running_total, label: Running Total, expression: 'running_total(${opportunity.total_amount})',
-        value_format: !!null '', value_format_name: usd_0, _kind_hint: measure, _type_hint: number}]
+        value_format: !!null '', value_format_name: usd_0, _kind_hint: measure, _type_hint: number},
+      {table_calculation: is_before_today_2, label: Is Before Today, expression: 'if(now()
+          < ${opportunity.close_date}, no, yes)', value_format: !!null '', value_format_name: !!null '',
+        _kind_hint: dimension, _type_hint: yesno}]
     x_axis_gridlines: false
     y_axis_gridlines: false
     show_view_names: 'true'
@@ -491,11 +495,13 @@
     label_density: 25
     x_axis_scale: time
     y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
+    ordering: none
+    show_null_labels: false
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    show_null_points: true
+    interpolation: linear
     custom_color_enabled: true
     custom_color: ''
     show_single_value_title: true
@@ -508,16 +514,17 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     hidden_fields: [opportunity.total_closed_won_new_business_amount, opportunity.total_amount]
-    listen:
-      Sales Rep: opportunity_owner.name
+    hidden_points_if_no: [is_before_today_2]
+    listen: {}
     row: 2
-    col: 13
-    width: 11
+    col: 12
+    width: 12
     height: 8
   filters:
   - name: Sales Rep
     title: Sales Rep
     type: field_filter
+    default_value:
     allow_multiple_values: true
     required: false
     model: block-sales
