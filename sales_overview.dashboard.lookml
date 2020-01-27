@@ -75,71 +75,6 @@
     col: 4
     width: 4
     height: 4
-  - title: Task Breakdown and Win %
-    name: Task Breakdown and Win %
-    model: block-sales
-    explore: opportunity
-    type: looker_column
-    fields: [task.created_month, task.calls, task.emails, task.meetings, opportunity.win_percentage]
-    fill_fields: [task.created_month]
-    filters:
-      task.created_month: 12 months
-    sorts: [task.created_month desc]
-    limit: 500
-    column_limit: 50
-    color_application:
-      collection_id: 5f313589-67ce-44ba-b084-ec5107a7bb7e
-      palette_id: be92eae7-de25-46ae-8e4f-21cb0b69a1f3
-      options:
-        steps: 5
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    y_axes: [{label: '', orientation: left, series: [{axisId: task.calls, id: task.calls,
-            name: Calls}, {axisId: task.emails, id: task.emails, name: Emails}, {
-            axisId: task.meetings, id: task.meetings, name: Meetings}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: opportunity.win_percentage,
-            id: opportunity.win_percentage, name: Win Percentage}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
-        type: linear}]
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: normal
-    limit_displayed_rows: false
-    legend_position: right
-    series_types:
-      opportunity.win_percentage: line
-    point_style: circle
-    series_colors:
-      task.calls: "#FFB690"
-      task.emails: "#EE9093"
-      task.meetings: "#C762AD"
-    series_point_styles:
-      opportunity.win_percentage: square
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    listen: {}
-    row: 13
-    col: 8
-    width: 16
-    height: 10
   - title: Historical Win Percentage by Deal Size
     name: Historical Win Percentage by Deal Size
     model: block-sales
@@ -181,10 +116,10 @@
     series_types: {}
     hidden_fields: []
     listen: {}
-    row: 23
-    col: 8
-    width: 16
-    height: 6
+    row: 21
+    col: 6
+    width: 18
+    height: 7
   - title: Top 5 Managers This Quarter
     name: Top 5 Managers This Quarter
     model: block-sales
@@ -270,66 +205,6 @@
     col: 0
     width: 8
     height: 8
-  - title: Quarterly Performance
-    name: Quarterly Performance
-    model: block-sales
-    explore: opportunity
-    type: looker_column
-    fields: [opportunity.close_quarter, opportunity.amount_per_rep, opportunity.win_percentage]
-    fill_fields: [opportunity.close_quarter]
-    filters:
-      opportunity.close_quarter: 4 quarters
-    sorts: [opportunity.close_quarter]
-    limit: 500
-    column_limit: 50
-    color_application:
-      collection_id: 5f313589-67ce-44ba-b084-ec5107a7bb7e
-      palette_id: be92eae7-de25-46ae-8e4f-21cb0b69a1f3
-      options:
-        steps: 5
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    y_axes: [{label: '', orientation: left, series: [{axisId: opportunity.amount_per_rep,
-            id: opportunity.amount_per_rep, name: Amount per Rep}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, type: linear}, {
-        label: !!null '', orientation: right, series: [{axisId: opportunity.win_percentage,
-            id: opportunity.win_percentage, name: Win Percentage}], showLabels: true,
-        showValues: true, unpinAxis: false, tickDensity: default, type: linear}]
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    series_types:
-      opportunity.win_percentage: line
-    point_style: circle
-    series_colors:
-      opportunity.amount_per_rep: "#9F4AB4"
-      opportunity.win_percentage: "#FDA08A"
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    listen: {}
-    row: 29
-    col: 0
-    width: 9
-    height: 8
   - title: Closed Deals by Opportunity Type
     name: Closed Deals by Opportunity Type
     model: block-sales
@@ -406,9 +281,9 @@
     show_null_points: true
     interpolation: linear
     listen: {}
-    row: 29
-    col: 15
-    width: 9
+    row: 28
+    col: 12
+    width: 12
     height: 8
   - title: Top 10 Reps This Quarter
     name: Top 10 Reps This Quarter
@@ -569,10 +444,10 @@
     conditional_formatting_include_nulls: false
     hidden_fields: [opportunity.name_id]
     listen: {}
-    row: 29
-    col: 9
+    row: 21
+    col: 0
     width: 6
-    height: 8
+    height: 7
   - title: Won Amount Running Total with Win %
     name: Won Amount Running Total with Win %
     model: block-sales
@@ -633,13 +508,79 @@
     col: 8
     width: 16
     height: 13
-  - title: This Quarter's Top Won Facts
-    name: This Quarter's Top Won Facts
+  - title: Manager Comparison (QTD)
+    name: Manager Comparison (QTD)
+    model: block-sales
+    explore: opportunity
+    type: looker_column
+    fields: [manager_facts.manager_name, manager_facts.avg_amount_won_per_rep, manager_facts.avg_pipeline_per_rep,
+      manager_facts.avg_win_percentage_per_rep]
+    filters:
+      opportunity.close_date: ''
+      manager_facts.manager_name: ''
+    sorts: [manager_facts.avg_win_percentage_per_rep desc]
+    limit: 20
+    color_application:
+      collection_id: da8306b5-3b46-48aa-9ead-a3b32292f35c
+      palette_id: 75905e81-dadc-472c-b9a2-a201f788d55d
+      options:
+        steps: 5
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    y_axes: [{label: '', orientation: left, series: [{axisId: manager_facts.avg_amount_won_per_rep,
+            id: manager_facts.avg_amount_won_per_rep, name: Avg Amount Won per Rep},
+          {axisId: manager_facts.avg_pipeline_per_rep, id: manager_facts.avg_pipeline_per_rep,
+            name: Avg Pipeline per Rep}], showLabels: true, showValues: true, unpinAxis: false,
+        tickDensity: default, type: linear}, {label: !!null '', orientation: right,
+        series: [{axisId: manager_facts.avg_win_percentage_per_rep, id: manager_facts.avg_win_percentage_per_rep,
+            name: Avg Win Percentage per Rep}], showLabels: false, showValues: true,
+        unpinAxis: true, tickDensity: default, type: linear}]
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: normal
+    limit_displayed_rows: false
+    legend_position: center
+    series_types:
+      manager_facts.avg_win_percentage_per_rep: line
+    point_style: circle
+    series_colors:
+      manager_facts.avg_amount_won_per_rep: "#B977A9"
+      manager_facts.avg_pipeline_per_rep: "#D13452"
+    series_point_styles: {}
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_null_points: true
+    interpolation: linear
+    listen: {}
+    row: 13
+    col: 8
+    width: 16
+    height: 8
+  - title: Won Opps (QTD)
+    name: Won Opps (QTD)
     model: block-sales
     explore: opportunity
     type: looker_grid
-    fields: [account.domain, account.industry, opportunity_owner.manager, opportunity.days_to_closed_won,
-      opportunity.total_amount, task.meetings, task.emails]
+    fields: [opportunity.name, account.industry, opportunity_owner.manager, opportunity.close_date,
+      opportunity.type, opportunity.days_to_closed_won, opportunity.total_amount,
+      task.emails]
     filters:
       opportunity.close_date: 1 quarters
       opportunity.is_closed: 'Yes'
@@ -704,56 +645,60 @@
     conditional_formatting_include_nulls: false
     series_types: {}
     listen: {}
-    row: 37
+    row: 36
     col: 0
     width: 24
     height: 12
-  - title: Per Rep Manager Comparison
-    name: Per Rep Manager Comparison
+  - title: Task Breakdown and Win %
+    name: Task Breakdown and Win %
     model: block-sales
     explore: opportunity
-    type: looker_bar
-    fields: [manager_facts.manager_name, manager_facts.avg_amount_won_per_rep, manager_facts.avg_pipeline_per_rep,
-      manager_facts.avg_win_percentage_per_rep]
+    type: looker_column
+    fields: [task.created_month, task.calls, task.emails, task.meetings]
+    fill_fields: [task.created_month]
     filters:
-      opportunity.close_date: 1 quarters
-    sorts: [manager_facts.avg_amount_won_per_rep desc]
-    limit: 10
+      task.created_month: 12 months
+    sorts: [task.created_month desc]
+    limit: 500
+    column_limit: 50
     color_application:
-      collection_id: da8306b5-3b46-48aa-9ead-a3b32292f35c
-      palette_id: 75905e81-dadc-472c-b9a2-a201f788d55d
+      collection_id: 5f313589-67ce-44ba-b084-ec5107a7bb7e
+      palette_id: be92eae7-de25-46ae-8e4f-21cb0b69a1f3
       options:
         steps: 5
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
-    y_axes: [{label: !!null '', orientation: top, series: [{axisId: manager_facts.avg_win_percentage_per_rep,
-            id: manager_facts.avg_win_percentage_per_rep, name: Avg Win Percentage
-              per Rep}], showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        type: linear}, {label: '', orientation: bottom, series: [{axisId: manager_facts.avg_amount_won_per_rep,
-            id: manager_facts.avg_amount_won_per_rep, name: Avg Amount Won per Rep},
-          {axisId: manager_facts.avg_pipeline_per_rep, id: manager_facts.avg_pipeline_per_rep,
-            name: Avg Pipeline per Rep}], showLabels: true, showValues: true, unpinAxis: false,
-        tickDensity: default, type: linear}]
+    y_axes: [{label: '', orientation: left, series: [{axisId: task.calls, id: task.calls,
+            name: Calls}, {axisId: task.emails, id: task.emails, name: Emails}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: task.meetings,
+            id: task.meetings, name: Meetings}], showLabels: true, showValues: true,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
     plot_size_by_field: false
     trellis: ''
-    stacking: ''
+    stacking: normal
     limit_displayed_rows: false
     legend_position: center
-    series_types: {}
-    point_style: none
+    series_types:
+      opportunity.win_percentage: line
+      task.meetings: line
+    point_style: circle
     series_colors:
-      manager_facts.avg_amount_won_per_rep: "#B977A9"
-      manager_facts.avg_pipeline_per_rep: "#D13452"
+      task.calls: "#FFB690"
+      task.emails: "#EE9093"
+      task.meetings: "#C762AD"
+    series_point_styles:
+      opportunity.win_percentage: square
     show_value_labels: false
     label_density: 25
     x_axis_scale: auto
@@ -763,10 +708,8 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    show_null_points: true
-    interpolation: linear
     listen: {}
-    row: 21
+    row: 28
     col: 0
-    width: 8
+    width: 12
     height: 8
