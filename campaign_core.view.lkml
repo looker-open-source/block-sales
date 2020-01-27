@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/campaign.view"
-include: "//block-sales-config/campaign.view"
+include: "//@{CONFIG_PROJECT_NAME}/campaign.view"
 
 view: campaign {
   extends: [campaign_config]

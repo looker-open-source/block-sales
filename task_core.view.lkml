@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/task.view"
-include: "//block-sales-config/task.view"
+include: "//@{CONFIG_PROJECT_NAME}/task.view"
 
 view: task {
   extends: [task_config]

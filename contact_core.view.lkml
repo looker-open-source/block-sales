@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/contact.view"
-include: "//block-sales-config/contact.view"
+include: "//@{CONFIG_PROJECT_NAME}/contact.view"
 
 view: contact {
   extends: [contact_config]
