@@ -207,6 +207,67 @@
     col: 18
     width: 6
     height: 7
+  - title: Cumulative Bookings By Rep
+    name: Cumulative Bookings By Rep
+    model: block-sales
+    explore: opportunity
+    type: looker_area
+    fields: [opportunity.close_date, opportunity.total_amount, owner_opp_sorted.name]
+    pivots: [owner_opp_sorted.name]
+    filters:
+      opportunity.is_won: 'Yes'
+    sorts: [opportunity.close_date, owner_opp_sorted.name desc]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{table_calculation: running_total, label: Running Total, expression: 'running_total(${opportunity.total_amount})',
+        value_format: !!null '', value_format_name: usd_0, _kind_hint: measure, _type_hint: number}]
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: 'true'
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: normal
+    limit_displayed_rows: false
+    legend_position: center
+    series_types: {}
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: time
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    custom_color_enabled: true
+    custom_color: ''
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: progress_percentage
+    comparison_reverse_colors: false
+    show_comparison_label: false
+    comparison_label: Gap
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    hidden_fields: [opportunity.total_closed_won_new_business_amount, opportunity.total_amount]
+    listen:
+      Manager: opportunity_owner.manager
+      Close Date: opportunity.close_date
+    row: 4
+    col: 0
+    width: 24
+    height: 12
   - title: Win Percentage
     name: Win Percentage
     model: block-sales
@@ -422,116 +483,6 @@
     name: Open Opportunities
     model: block-sales
     explore: opportunity
-    type: looker_grid
-    fields: [opportunity.name, opportunity_owner.name, opportunity.type, opportunity.created_date,
-      opportunity.close_date, opportunity.days_open, opportunity.next_step, opportunity.amount,
-      opportunity.stage_name]
-    filters:
-      opportunity.is_pipeline: 'Yes'
-    sorts: [opportunity.close_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields: [{table_calculation: days_open, label: Days Open, expression: 'if(${opportunity.days_open}
-          >= 0, to_string(${opportunity.days_open}), "Update Close Date")', value_format: !!null '',
-        value_format_name: !!null '', _kind_hint: dimension, _type_hint: string}]
-    show_totals: true
-    show_row_totals: true
-    show_view_names: false
-    show_row_numbers: true
-    transpose: false
-    truncate_text: true
-    size_to_fit: true
-    series_labels:
-      opportunity.name: Opportunity Name
-      opportunity_owner.name: Rep
-      opportunity.type: Opportunity Type
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    truncate_column_names: false
-    subtotals_at_bottom: false
-    hide_totals: false
-    hide_row_totals: false
-    series_types: {}
-    hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
-      opportunity_history_days_in_current_stage.most_recent_stage_change_date, opportunity.days_open]
-    listen:
-      Manager: opportunity_owner.manager
-      Close Date: opportunity.close_date
-    row: 39
-    col: 0
-    width: 24
-    height: 7
-  - title: Cumulative Bookings By Rep
-    name: Cumulative Bookings By Rep
-    model: block-sales
-    explore: opportunity
-    type: looker_area
-    fields: [opportunity.close_date, opportunity.total_amount, owner_opp_sorted.name]
-    pivots: [owner_opp_sorted.name]
-    filters:
-      opportunity.is_won: 'Yes'
-    sorts: [opportunity.close_date, owner_opp_sorted.name desc]
-    limit: 500
-    column_limit: 50
-    dynamic_fields: [{table_calculation: running_total, label: Running Total, expression: 'running_total(${opportunity.total_amount})',
-        value_format: !!null '', value_format_name: usd_0, _kind_hint: measure, _type_hint: number}]
-    x_axis_gridlines: false
-    y_axis_gridlines: false
-    show_view_names: 'true'
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: normal
-    limit_displayed_rows: false
-    legend_position: center
-    series_types: {}
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: time
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    custom_color_enabled: true
-    custom_color: ''
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: progress_percentage
-    comparison_reverse_colors: false
-    show_comparison_label: false
-    comparison_label: Gap
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    hidden_fields: [opportunity.total_closed_won_new_business_amount, opportunity.total_amount]
-    listen:
-      Manager: opportunity_owner.manager
-      Close Date: opportunity.close_date
-    row: 4
-    col: 0
-    width: 24
-    height: 12
-  - title: Open Opportunities Field
-    name: Open Opportunities Field
-    model: block-sales
-    explore: opportunity
     type: looker_scatter
     fields: [opportunity.name, opportunity.days_open, opportunity.total_amount]
     sorts: [opportunity.total_amount desc]
@@ -572,10 +523,55 @@
     col: 0
     width: 24
     height: 8
+  - title: Open Opportunities
+    name: Open Opportunities
+    model: block-sales
+    explore: opportunity
+    type: looker_grid
+    fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
+      opportunity.stage_name, opportunity.days_open, opportunity.next_step, opportunity.amount]
+    filters:
+      opportunity.is_pipeline: 'Yes'
+      opportunity_owner.name: ''
+      opportunity_owner.manager: ''
+      opportunity.type: ''
+    sorts: [opportunity.close_date]
+    limit: 500
+    column_limit: 50
+    show_totals: true
+    show_row_totals: true
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    size_to_fit: true
+    series_cell_visualizations:
+      opportunity.amount:
+        is_active: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    truncate_column_names: false
+    subtotals_at_bottom: false
+    hide_totals: false
+    hide_row_totals: false
+    series_types: {}
+    hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
+      opportunity_history_days_in_current_stage.most_recent_stage_change_date]
+    row: 39
+    col: 0
+    width: 24
+    height: 7
   filters:
   - name: Manager
     title: Manager
     type: field_filter
+    default_value:
     allow_multiple_values: true
     required: false
     model: block-sales
