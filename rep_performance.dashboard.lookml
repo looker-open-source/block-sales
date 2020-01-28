@@ -323,7 +323,7 @@
     series_types: {}
     listen:
       Sales Rep: opportunity_owner.name
-    row: 25
+    row: 18
     col: 0
     width: 24
     height: 7
@@ -352,51 +352,6 @@
     col: 0
     width: 24
     height: 2
-  - title: Open Opportunities
-    name: Open Opportunities
-    model: block-sales
-    explore: opportunity
-    type: looker_grid
-    fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
-      opportunity.days_open, opportunity.next_step, opportunity.amount, opportunity.stage_name]
-    filters:
-      opportunity.is_pipeline: 'Yes'
-      opportunity_owner.manager: ''
-      opportunity.type: ''
-    sorts: [opportunity.close_date]
-    limit: 500
-    column_limit: 50
-    dynamic_fields: [{table_calculation: days_open, label: Days Open, expression: 'if(${opportunity.days_open}
-          >= 0, to_string(${opportunity.days_open}), "Update Close Date")', value_format: !!null '',
-        value_format_name: !!null '', _kind_hint: dimension, _type_hint: string}]
-    show_totals: true
-    show_row_totals: true
-    show_view_names: 'true'
-    show_row_numbers: true
-    transpose: false
-    truncate_text: true
-    size_to_fit: true
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    truncate_column_names: false
-    subtotals_at_bottom: false
-    hide_totals: false
-    hide_row_totals: false
-    series_types: {}
-    hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
-      opportunity_history_days_in_current_stage.most_recent_stage_change_date, opportunity.days_open]
-    listen:
-      Sales Rep: opportunity_owner.name
-    row: 18
-    col: 0
-    width: 24
-    height: 7
   - title: Opportunities By Stage
     name: Opportunities By Stage
     model: block-sales
@@ -520,6 +475,50 @@
     col: 12
     width: 12
     height: 8
+  - title: Open Opportunities
+    name: Open Opportunities
+    model: block-sales
+    explore: opportunity
+    type: looker_grid
+    fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
+      opportunity.stage_name, opportunity.days_open, opportunity.next_step, opportunity.amount]
+    filters:
+      opportunity.is_pipeline: 'Yes'
+      opportunity_owner.name: ''
+      opportunity_owner.manager: ''
+      opportunity.type: ''
+    sorts: [opportunity.close_date]
+    limit: 500
+    column_limit: 50
+    show_totals: true
+    show_row_totals: true
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    size_to_fit: true
+    series_cell_visualizations:
+      opportunity.amount:
+        is_active: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    truncate_column_names: false
+    subtotals_at_bottom: false
+    hide_totals: false
+    hide_row_totals: false
+    series_types: {}
+    hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
+      opportunity_history_days_in_current_stage.most_recent_stage_change_date]
+    row: 25
+    col: 0
+    width: 24
+    height: 7
   filters:
   - name: Sales Rep
     title: Sales Rep

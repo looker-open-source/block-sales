@@ -37,7 +37,7 @@ explore: opportunity_core {
   }
   join: manager {
     from: user
-    sql_on: ${opportunity_owner.manager_id} = ${manager.id};;
+    sql_on: ${opportunity_owner.manager_id} = ${manager.id} ;;
     relationship: many_to_one
   }
   join: manager_facts {
