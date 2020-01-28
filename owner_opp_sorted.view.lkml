@@ -1,5 +1,4 @@
-# include: "//@{CONFIG_PROJECT_NAME}/owner_opp_sorted.view"
-include: "//block-sales-config/owner_opp_sorted.view"
+include: "//@{CONFIG_PROJECT_NAME}/owner_opp_sorted.view"
 
 view: owner_opp_sorted {
   extends: [owner_opp_sorted_config]
