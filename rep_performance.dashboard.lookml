@@ -418,7 +418,7 @@
     filters:
       opportunity.close_date: 1 quarters
       opportunity.is_won: 'Yes'
-      opportunity_owner.name: Olivia Winter
+      opportunity_owner.name:
     sorts: [opportunity.close_date]
     limit: 500
     column_limit: 50
