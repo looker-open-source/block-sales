@@ -21,11 +21,9 @@ view: manager_facts_core {
       FROM  salesforce.user  AS manager
       JOIN salesforce.user  AS opportunity_owner ON  manager.id = opportunity_owner.manager_id
       JOIN salesforce.opportunity  AS opportunity ON opportunity_owner.id = opportunity.owner_id
-
       WHERE NOT opportunity.is_deleted
       GROUP BY 1,2 ;;
-  }
-
+    }
   dimension: id {
     type: string
     sql: ${TABLE}.id ;;
@@ -88,11 +86,9 @@ view: manager_facts_core {
   }
 
 }
-
 view: user_core {
   extension: required
   sql_table_name: @{SALESFORCE_SCHEMA}.user ;;
-
   dimension: id {
     primary_key: yes
     type: string
@@ -118,7 +114,6 @@ view: user_core {
   }
 
   #### How longh does it take an AE to ramp #### default
-
   dimension: about_me {
     type: string
     sql: ${TABLE}.about_me ;;
@@ -136,7 +131,6 @@ view: user_core {
     sql: ${TABLE}.alias ;;
     hidden: yes
   }
-
   dimension: badge_text {
     type: string
     sql: ${TABLE}.badge_text ;;
@@ -549,12 +543,10 @@ view: user_core {
     hidden: yes
   }
 
-
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
   }
-
 
   dimension: user_role_id {
     type: string
@@ -578,14 +570,11 @@ view: user_core {
     sql: ${manager.name} ;;
   }
 
-
   ### Measure
-
   measure: count {
     type: count
     drill_fields: [detail*]
   }
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
