@@ -119,7 +119,7 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 31
+    row: 46
     col: 0
     width: 24
     height: 8
@@ -203,7 +203,7 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 24
+    row: 32
     col: 18
     width: 6
     height: 7
@@ -389,7 +389,7 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 24
+    row: 32
     col: 0
     width: 8
     height: 7
@@ -475,7 +475,7 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 24
+    row: 32
     col: 8
     width: 10
     height: 7
@@ -484,7 +484,8 @@
     model: block-sales
     explore: opportunity
     type: looker_scatter
-    fields: [opportunity.name, opportunity.days_open, opportunity.total_amount]
+    fields: [opportunity.name, opportunity.days_open, opportunity.total_amount, opportunity_owner.name,
+      opportunity.days_open_with_opp_name_and_owner]
     sorts: [opportunity.total_amount desc]
     limit: 500
     column_limit: 50
@@ -496,6 +497,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: true
+    x_axis_label: Days Open
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -515,16 +517,14 @@
     y_axis_combined: true
     reference_lines: []
     show_null_points: true
-    hidden_fields: [opportunity.name]
-    listen:
-      Manager: opportunity_owner.manager
-      Close Date: opportunity.close_date
+    hidden_fields: [opportunity.name, opportunity_owner.name, opportunity.days_open]
+    listen: {}
     row: 16
     col: 0
     width: 24
     height: 8
-  - title: Open Opportunities
-    name: Open Opportunities
+  - title: Open Opportunities List
+    name: Open Opportunities List
     model: block-sales
     explore: opportunity
     type: looker_grid
@@ -563,6 +563,7 @@
     series_types: {}
     hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
       opportunity_history_days_in_current_stage.most_recent_stage_change_date]
+    listen: {}
     row: 39
     col: 0
     width: 24
