@@ -238,40 +238,40 @@ view: opportunity_core {
       url:"http://@{SALESFORCE_DOMAIN}/{{ opportunity.id._value }}"
       label: "View in Salesforce"
     }
-    }
+  }
 
-    dimension: next_step {
-      type: string
-      sql: ${TABLE}.next_step ;;
-    }
+  dimension: next_step {
+    type: string
+    sql: ${TABLE}.next_step ;;
+  }
 
-    dimension: owner_id {
-      type: string
-      sql: ${TABLE}.owner_id ;;
-      hidden: yes
-    }
+  dimension: owner_id {
+    type: string
+    sql: ${TABLE}.owner_id ;;
+    hidden: yes
+  }
 
-    dimension: pricebook_2_id {
-      type: string
-      sql: ${TABLE}.pricebook_2_id ;;
-      hidden: yes
-    }
+  dimension: pricebook_2_id {
+    type: string
+    sql: ${TABLE}.pricebook_2_id ;;
+    hidden: yes
+  }
 
-    dimension: probability {
-      type: number
-      sql: ${TABLE}.probability ;;
-      hidden: yes
-    }
+  dimension: probability {
+    type: number
+    sql: ${TABLE}.probability ;;
+    hidden: yes
+  }
 
 #     dimension: source {
 #       type: string
 #       sql: ${lead_source} ;;
 #     }
 
-    dimension: stage_name {
-      type: string
-      sql: ${TABLE}.stage_name ;;
-    }
+  dimension: stage_name {
+    type: string
+    sql: ${TABLE}.stage_name ;;
+  }
 
   dimension: probability_group {
     group_label: "Probability"
@@ -388,41 +388,41 @@ view: opportunity_core {
       ;;
   }
 
-    dimension_group: system_modstamp {
-      type: time
-      timeframes: [
-        raw,
-        time,
-        date,
-        week,
-        month,
-        quarter,
-        year
-      ]
-      sql: ${TABLE}.system_modstamp ;;
-      hidden: yes
-    }
+  dimension_group: system_modstamp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.system_modstamp ;;
+    hidden: yes
+  }
 
-    dimension: total_opportunity_quantity {
-      type: number
-      sql: ${TABLE}.total_opportunity_quantity ;;
-      hidden: yes
-    }
+  dimension: total_opportunity_quantity {
+    type: number
+    sql: ${TABLE}.total_opportunity_quantity ;;
+    hidden: yes
+  }
 
-    dimension_group: _fivetran_synced {
-      type: time
-      timeframes: [
-        raw,
-        time,
-        date,
-        week,
-        month,
-        quarter,
-        year
-      ]
-      sql: ${TABLE}._fivetran_synced ;;
-      hidden: yes
-    }
+  dimension_group: _fivetran_synced {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}._fivetran_synced ;;
+    hidden: yes
+  }
 
   dimension: days_open_tier {
     type: tier
@@ -447,7 +447,7 @@ view: opportunity_core {
       url:"http://@{SALESFORCE_DOMAIN}/{{ opportunity.id._value }}"
       label: "View in Salesforce"
     }
-    }
+  }
 
   dimension: is_lost {
     type: yesno
@@ -561,12 +561,20 @@ view: opportunity_core {
               END ;;
   }
 
+  dimension: days_open_with_opp_name_and_owner {
+    description: "Custom dimension that includes Opp name and owner in Days Open."
+    type: number
+    sql: ${days_open};;
+    hidden: yes
+    html:  {{ rendered_value }} || {{ opportunity.name._rendered_value }} || {{ opportunity_owner.name._rendered_value }};;
+}
+
   dimension: days_to_closed_won {
     description: "Number of days from opportunity creation to Closed-Won status"
     type: number
     sql: CASE WHEN ${is_closed} AND ${is_won} THEN ${days_open}
-              ELSE null
-              END ;;
+                ELSE null
+                END ;;
   }
 
   dimension_group: as_customer  {
@@ -599,13 +607,13 @@ view: opportunity_core {
   }
 
 
-###     Measures:
+  ###     Measures:
 
-    measure: count {
-      type: count
-      drill_fields: [detail*]
-      label: "Number of Opportunities"
-    }
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+    label: "Number of Opportunities"
+  }
 
   measure: total_amount {
     label: "Total Amount"
@@ -860,7 +868,7 @@ view: opportunity_core {
 
 
 
-    # ----- Sets of fields for drilling ------
+  # ----- Sets of fields for drilling ------
   set: opp_drill_set_closed {
     fields: [opportunity.id, opportunity.name, opportunity_owner.name, account.name, close_date, type, days_as_opportunity, amount]
   }
@@ -936,23 +944,23 @@ view: opportunity_core {
   # }
 
   # May want to revisit the name here since we're using "is_included_in_quota" rather than "is_new_business"
-#   measure: total_closed_won_new_business_amount { # total_closed for all opp owners
-#     label: "Closed Won {{ amount_display._sql }}"
-#     type: sum
-#     sql: ${amount};;
-# #     hidden: yes
-#     filters: {
-#       field: is_won
-#       value: "yes"
-#     }
-#     filters: {
-#       field: is_included_in_quota
-#       value: "yes"
-#     }
-#     value_format_name: custom_amount_value_format
-#     drill_fields: [opp_drill_set_closed*]
-#     description: "Only Includes Quota Contributing Opportunities"
-#   }
+  #   measure: total_closed_won_new_business_amount { # total_closed for all opp owners
+  #     label: "Closed Won {{ amount_display._sql }}"
+  #     type: sum
+  #     sql: ${amount};;
+  # #     hidden: yes
+  #     filters: {
+  #       field: is_won
+  #       value: "yes"
+  #     }
+  #     filters: {
+  #       field: is_included_in_quota
+  #       value: "yes"
+  #     }
+  #     value_format_name: custom_amount_value_format
+  #     drill_fields: [opp_drill_set_closed*]
+  #     description: "Only Includes Quota Contributing Opportunities"
+  #   }
 
   ### The following Two measures for highlighting in leaderboard bar charts
   # measure: total_closed_won_new_business_amount_leaderboard { # total_closed for all opp owners except selected in opportunity_owner.name_select
@@ -973,24 +981,24 @@ view: opportunity_core {
   #   description: "Closed won of all Opportunity Owners except name specified in 'Name Select'. Only Includes Quota Contributing Opportunities"
   # }
 
-#   measure: rep_highlight_acv { # total_closed for opp owner selected by opportunity_owner.name_select only
-#     type: sum
-#     label: "Closed Won {{ amount_display._sql }} for Selected Owner"
-#     view_label: "Opportunity Owner" # moved from user_core view to avoid possible fanout
-#     sql: CASE WHEN ${opportunity_owner.name} = {% parameter opportunity_owner.name_select %} THEN ${amount} ELSE NULL END ;;
-# #     hidden: yes
-#     filters: {
-#       field: is_won
-#       value: "yes"
-#     }
-#     filters: {
-#       field: is_included_in_quota
-#       value: "yes"
-#     }
-#     value_format_name: custom_amount_value_format
-#     drill_fields: [opp_drill_set_closed*]
-#     description: "Only Includes Quota Contributing Opportunities. Will only show value for Opp Owner selected by 'Name Select'"
-#   }
+  #   measure: rep_highlight_acv { # total_closed for opp owner selected by opportunity_owner.name_select only
+  #     type: sum
+  #     label: "Closed Won {{ amount_display._sql }} for Selected Owner"
+  #     view_label: "Opportunity Owner" # moved from user_core view to avoid possible fanout
+  #     sql: CASE WHEN ${opportunity_owner.name} = {% parameter opportunity_owner.name_select %} THEN ${amount} ELSE NULL END ;;
+  # #     hidden: yes
+  #     filters: {
+  #       field: is_won
+  #       value: "yes"
+  #     }
+  #     filters: {
+  #       field: is_included_in_quota
+  #       value: "yes"
+  #     }
+  #     value_format_name: custom_amount_value_format
+  #     drill_fields: [opp_drill_set_closed*]
+  #     description: "Only Includes Quota Contributing Opportunities. Will only show value for Opp Owner selected by 'Name Select'"
+  #   }
 
   # measure: average_new_deal_size {
   #   type: average
@@ -1074,7 +1082,7 @@ view: opportunity_core {
   #   drill_fields: [opp_drill_set_closed*]
   # }
 
-    # measure: count_new_business_won {
+  # measure: count_new_business_won {
   #   label: "Number of New-Business Opportunities Won"
   #   type: count
   #   hidden: yes
@@ -1300,41 +1308,41 @@ view: opportunity_core {
   # }
 
 
-#   measure: number_of_upcoming_opportunities {
-#     label: "Number of Upcoming Opportunities"
-#     type: count
-#     hidden: yes
-#     filters: {
-#       field: has_an_upcoming_first_meeting
-#       value: "yes"
-#     }
-#
-#     filters: {
-#       field: is_in_stage_1
-#       value: "yes"
-#     }
-#
-#     drill_fields: [opp_drill_set_open*]
-#
-#   }
-#
-#   measure: number_of_opportunities_with_no_next_steps {
-#     type: count
-#     hidden: yes
-#     filters: {
-#       field: is_included_in_quota
-#       value: "yes"
-#     }
-#     filters: {
-#       field: is_closed
-#       value: "no"
-#     }
-#     filters: {
-#       field: opportunity.next_step
-#       value: "NULL"
-#     }
-#     drill_fields: [opp_drill_set_open*, opportunity.custom_stage_name, opportunity.next_step]
-#   }
+  #   measure: number_of_upcoming_opportunities {
+  #     label: "Number of Upcoming Opportunities"
+  #     type: count
+  #     hidden: yes
+  #     filters: {
+  #       field: has_an_upcoming_first_meeting
+  #       value: "yes"
+  #     }
+  #
+  #     filters: {
+  #       field: is_in_stage_1
+  #       value: "yes"
+  #     }
+  #
+  #     drill_fields: [opp_drill_set_open*]
+  #
+  #   }
+  #
+  #   measure: number_of_opportunities_with_no_next_steps {
+  #     type: count
+  #     hidden: yes
+  #     filters: {
+  #       field: is_included_in_quota
+  #       value: "yes"
+  #     }
+  #     filters: {
+  #       field: is_closed
+  #       value: "no"
+  #     }
+  #     filters: {
+  #       field: opportunity.next_step
+  #       value: "NULL"
+  #     }
+  #     drill_fields: [opp_drill_set_open*, opportunity.custom_stage_name, opportunity.next_step]
+  #   }
 
   # May want to revisit the name here since we're using "is_included_in_quota" rather than "is_new_business"
   # measure: total_closed_lost_amount {
