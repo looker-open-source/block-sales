@@ -32,7 +32,7 @@
     row: 0
     col: 6
     width: 6
-    height: 4
+    height: 3
   - title: Opportunities Won
     name: Opportunities Won
     model: block-sales
@@ -71,7 +71,7 @@
     row: 0
     col: 12
     width: 6
-    height: 4
+    height: 3
   - title: Rep Performance
     name: Rep Performance
     model: block-sales
@@ -119,10 +119,10 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 46
-    col: 0
-    width: 24
-    height: 8
+    row: 27
+    col: 12
+    width: 12
+    height: 9
   - title: Pipeline Created
     name: Pipeline Created
     model: block-sales
@@ -152,61 +152,7 @@
     row: 0
     col: 0
     width: 6
-    height: 4
-  - title: Bookings Distribution
-    name: Bookings Distribution
-    model: block-sales
-    explore: opportunity
-    type: looker_pie
-    fields: [opportunity.average_amount_won, opportunity_owner.name]
-    filters:
-      opportunity.total_amount: ">0"
-    sorts: [opportunity.average_amount_won desc]
-    limit: 20
-    column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
-      options:
-        steps: 5
-    series_labels:
-      opportunity.total_new_closed_won_amount_qtd: Closed Won
-      opportunity.total_pipeline_amount: Pipeline
-    show_view_names: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: true
-    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
-        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1,
-          options: {steps: 5}}, bold: false, italic: false, strikethrough: false,
-        fields: []}, {type: less than, value: 1, background_color: "#F36254", font_color: !!null '',
-        color_application: {collection_id: legacy, palette_id: legacy_diverging1,
-          options: {steps: 5, constraints: {max: {type: number, value: 0.1}, min: {
-                type: number, value: 0}, mid: {type: number, value: 0.5}}}}, bold: false,
-        italic: false, strikethrough: false, fields: []}, {type: between, value: [
-          1, 2], background_color: "#FCF758", font_color: !!null '', color_application: {
-          collection_id: legacy, palette_id: legacy_diverging1}, bold: false, italic: false,
-        strikethrough: false, fields: []}, {type: greater than, value: 2, background_color: "#4FBC89",
-        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
-        bold: false, italic: false, strikethrough: false, fields: []}]
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    subtotals_at_bottom: false
-    series_types: {}
-    hidden_fields: [opportunity.total_new_closed_won_amount_qtd]
-    listen:
-      Manager: opportunity_owner.manager
-      Close Date: opportunity.close_date
-    row: 32
-    col: 18
-    width: 6
-    height: 7
+    height: 3
   - title: Cumulative Bookings By Rep
     name: Cumulative Bookings By Rep
     model: block-sales
@@ -264,10 +210,10 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 4
+    row: 3
     col: 0
     width: 24
-    height: 12
+    height: 8
   - title: Win Percentage
     name: Win Percentage
     model: block-sales
@@ -307,7 +253,7 @@
     row: 0
     col: 18
     width: 6
-    height: 4
+    height: 3
   - title: Avg Days To Close By Rep
     name: Avg Days To Close By Rep
     model: block-sales
@@ -389,139 +335,9 @@
     listen:
       Manager: opportunity_owner.manager
       Close Date: opportunity.close_date
-    row: 32
+    row: 11
     col: 0
     width: 8
-    height: 7
-  - title: Opportunities Won By Rep
-    name: Opportunities Won By Rep
-    model: block-sales
-    explore: opportunity
-    type: looker_column
-    fields: [opportunity_owner.name, opportunity.count_won]
-    filters:
-      opportunity.count_won: ">0"
-    sorts: [opportunity.count_won desc]
-    limit: 50
-    column_limit: 50
-    color_application:
-      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
-      palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
-      options:
-        steps: 5
-    x_axis_gridlines: false
-    y_axis_gridlines: false
-    show_view_names: false
-    y_axes: [{label: '', orientation: bottom, series: [{axisId: opportunity.average_days_to_closed_won,
-            id: opportunity.average_days_to_closed_won, name: Average Days to Closed
-              Won}], showLabels: true, showValues: false, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    series_types: {}
-    point_style: none
-    series_colors:
-      opportunity.average_days_to_closed_won: "#592EC2"
-      opportunity.count_won: "#4276BE"
-    series_labels:
-      opportunity.total_new_closed_won_amount_qtd: Closed Won
-      opportunity.total_pipeline_amount: Pipeline
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    value_labels: legend
-    label_type: labPer
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: white
-    enable_conditional_formatting: true
-    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
-        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1,
-          options: {steps: 5}}, bold: false, italic: false, strikethrough: false,
-        fields: []}, {type: less than, value: 1, background_color: "#F36254", font_color: !!null '',
-        color_application: {collection_id: legacy, palette_id: legacy_diverging1,
-          options: {steps: 5, constraints: {max: {type: number, value: 0.1}, min: {
-                type: number, value: 0}, mid: {type: number, value: 0.5}}}}, bold: false,
-        italic: false, strikethrough: false, fields: []}, {type: between, value: [
-          1, 2], background_color: "#FCF758", font_color: !!null '', color_application: {
-          collection_id: legacy, palette_id: legacy_diverging1}, bold: false, italic: false,
-        strikethrough: false, fields: []}, {type: greater than, value: 2, background_color: "#4FBC89",
-        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
-        bold: false, italic: false, strikethrough: false, fields: []}]
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    subtotals_at_bottom: false
-    hidden_fields: [opportunity.total_new_closed_won_amount_qtd]
-    listen:
-      Manager: opportunity_owner.manager
-      Close Date: opportunity.close_date
-    row: 32
-    col: 8
-    width: 10
-    height: 7
-  - title: Open Opportunities
-    name: Open Opportunities
-    model: block-sales
-    explore: opportunity
-    type: looker_scatter
-    fields: [opportunity.name, opportunity.days_open, opportunity.total_amount, opportunity_owner.name,
-      opportunity.days_open_with_opp_name_and_owner]
-    sorts: [opportunity.total_amount desc]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: true
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    x_axis_label: Days Open
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    series_types: {}
-    point_style: circle_outline
-    series_colors:
-      opportunity.total_amount: "#B1399E"
-    show_value_labels: true
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    reference_lines: []
-    show_null_points: true
-    hidden_fields: [opportunity.name, opportunity_owner.name, opportunity.days_open]
-    listen: {}
-    row: 16
-    col: 0
-    width: 24
     height: 8
   - title: Open Opportunities List
     name: Open Opportunities List
@@ -564,10 +380,226 @@
     hidden_fields: [opportunity.first_meeting_date, opportunity_history_days_in_current_stage.most_recent_stage_change_date_date,
       opportunity_history_days_in_current_stage.most_recent_stage_change_date]
     listen: {}
-    row: 39
+    row: 27
+    col: 0
+    width: 12
+    height: 9
+  - title: Opportunities Won By Rep
+    name: Opportunities Won By Rep
+    model: block-sales
+    explore: opportunity
+    type: looker_bar
+    fields: [opportunity_owner.name, opportunity.count_won]
+    filters:
+      opportunity.count_won: ">0"
+    sorts: [opportunity.count_won desc]
+    limit: 50
+    column_limit: 50
+    color_application:
+      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
+      palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
+      options:
+        steps: 5
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axes: [{label: '', orientation: bottom, series: [{axisId: opportunity.average_days_to_closed_won,
+            id: opportunity.average_days_to_closed_won, name: Average Days to Closed
+              Won}], showLabels: true, showValues: false, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    series_types: {}
+    point_style: none
+    series_colors:
+      opportunity.average_days_to_closed_won: "#592EC2"
+      opportunity.count_won: "#592EC2"
+    series_labels:
+      opportunity.total_new_closed_won_amount_qtd: Closed Won
+      opportunity.total_pipeline_amount: Pipeline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    value_labels: legend
+    label_type: labPer
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: white
+    enable_conditional_formatting: true
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
+        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1,
+          options: {steps: 5}}, bold: false, italic: false, strikethrough: false,
+        fields: []}, {type: less than, value: 1, background_color: "#F36254", font_color: !!null '',
+        color_application: {collection_id: legacy, palette_id: legacy_diverging1,
+          options: {steps: 5, constraints: {max: {type: number, value: 0.1}, min: {
+                type: number, value: 0}, mid: {type: number, value: 0.5}}}}, bold: false,
+        italic: false, strikethrough: false, fields: []}, {type: between, value: [
+          1, 2], background_color: "#FCF758", font_color: !!null '', color_application: {
+          collection_id: legacy, palette_id: legacy_diverging1}, bold: false, italic: false,
+        strikethrough: false, fields: []}, {type: greater than, value: 2, background_color: "#4FBC89",
+        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
+        bold: false, italic: false, strikethrough: false, fields: []}]
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    subtotals_at_bottom: false
+    hidden_fields: [opportunity.total_new_closed_won_amount_qtd]
+    listen:
+      Manager: opportunity_owner.manager
+      Close Date: opportunity.close_date
+    row: 11
+    col: 8
+    width: 9
+    height: 8
+  - title: Open Opportunities
+    name: Open Opportunities
+    model: block-sales
+    explore: opportunity
+    type: looker_scatter
+    fields: [opportunity.name, opportunity.days_open, opportunity.total_amount, opportunity_owner.name,
+      opportunity.days_open_with_opp_name_and_owner]
+    sorts: [opportunity.total_amount desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: true
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    x_axis_label: Days Open
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    series_types: {}
+    point_style: circle_outline
+    series_colors:
+      opportunity.total_amount: "#592EC2"
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    reference_lines: []
+    show_null_points: true
+    hidden_fields: [opportunity.name, opportunity_owner.name, opportunity.days_open]
+    listen: {}
+    row: 19
     col: 0
     width: 24
-    height: 7
+    height: 8
+  - title: Bookings Distribution
+    name: Bookings Distribution
+    model: block-sales
+    explore: opportunity
+    type: looker_bar
+    fields: [opportunity_owner.name, opportunity.total_closed_won_amount]
+    filters:
+      opportunity.total_amount: ">0"
+    sorts: [opportunity.total_closed_won_amount desc]
+    limit: 20
+    column_limit: 50
+    color_application:
+      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
+      palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
+      options:
+        steps: 5
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axes: [{label: '', orientation: bottom, series: [{axisId: opportunity.average_amount_won,
+            id: opportunity.average_amount_won, name: Average Amount Won}], showLabels: true,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    series_types: {}
+    point_style: none
+    series_colors:
+      opportunity.average_amount_won: "#592EC2"
+      opportunity.total_closed_won_amount: "#592EC2"
+    series_labels:
+      opportunity.total_new_closed_won_amount_qtd: Closed Won
+      opportunity.total_pipeline_amount: Pipeline
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    value_labels: legend
+    label_type: labPer
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: white
+    enable_conditional_formatting: true
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
+        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1,
+          options: {steps: 5}}, bold: false, italic: false, strikethrough: false,
+        fields: []}, {type: less than, value: 1, background_color: "#F36254", font_color: !!null '',
+        color_application: {collection_id: legacy, palette_id: legacy_diverging1,
+          options: {steps: 5, constraints: {max: {type: number, value: 0.1}, min: {
+                type: number, value: 0}, mid: {type: number, value: 0.5}}}}, bold: false,
+        italic: false, strikethrough: false, fields: []}, {type: between, value: [
+          1, 2], background_color: "#FCF758", font_color: !!null '', color_application: {
+          collection_id: legacy, palette_id: legacy_diverging1}, bold: false, italic: false,
+        strikethrough: false, fields: []}, {type: greater than, value: 2, background_color: "#4FBC89",
+        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
+        bold: false, italic: false, strikethrough: false, fields: []}]
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    subtotals_at_bottom: false
+    hidden_fields: [opportunity.total_new_closed_won_amount_qtd]
+    listen:
+      Manager: opportunity_owner.manager
+      Close Date: opportunity.close_date
+    row: 11
+    col: 17
+    width: 7
+    height: 8
   filters:
   - name: Manager
     title: Manager
