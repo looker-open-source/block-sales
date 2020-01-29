@@ -86,8 +86,8 @@ view: account_core {
   }
 
   dimension: billing_state {
-    type: string
-    sql: ${TABLE}.billing_state ;;
+    map_layer_name: us_states
+    sql: IF(LENGTH(${TABLE}.billing_state) = 2, ${TABLE}.billing_state, null);;
     group_label: "Billing Details"
   }
 
