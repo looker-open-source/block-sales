@@ -68,8 +68,8 @@
     font_size: small
     listen:
       Sales Rep: opportunity_owner.name
-    row: 6
-    col: 6
+    row: 2
+    col: 18
     width: 6
     height: 4
   - title: Closed Won Opps
@@ -101,7 +101,7 @@
     listen:
       Sales Rep: opportunity_owner.name
     row: 2
-    col: 6
+    col: 12
     width: 6
     height: 4
   - title: Pipeline QTD
@@ -134,87 +134,10 @@
     hidden_fields:
     listen:
       Sales Rep: opportunity_owner.name
-    row: 6
-    col: 0
+    row: 2
+    col: 6
     width: 6
     height: 4
-  - title: Biggest Wins
-    name: Biggest Wins
-    model: block-sales
-    explore: opportunity
-    type: looker_bar
-    fields: [account.logo64, opportunity.total_amount]
-    filters:
-      opportunity.is_won: 'Yes'
-    limit: 5
-    column_limit: 50
-    trellis: ''
-    stacking: ''
-    color_application:
-      collection_id: 5f313589-67ce-44ba-b084-ec5107a7bb7e
-      custom:
-        id: a168681c-ceaf-aafc-f70f-cb3109b3c060
-        label: Custom
-        type: continuous
-        stops:
-        - color: "#462C9D"
-          offset: 0
-        - color: "#462C9D"
-          offset: 100
-      options:
-        steps: 5
-    show_value_labels: true
-    label_density: 25
-    font_size: small
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    point_style: none
-    series_colors:
-      opportunity.total_closed_won_new_business_amount: "#462C9D"
-    series_types: {}
-    limit_displayed_rows: false
-    y_axes: [{label: '', orientation: left, series: [{id: opportunity.total_closed_won_new_business_amount,
-            name: 'Closed Won ACV ', axisId: opportunity.total_closed_won_new_business_amount}],
-        showLabels: false, showValues: false, unpinAxis: false, tickDensity: default,
-        tickDensityCustom: 5, type: linear}]
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    show_row_numbers: true
-    truncate_column_names: false
-    subtotals_at_bottom: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: white
-    enable_conditional_formatting: false
-    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
-        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
-        bold: false, italic: false, strikethrough: false, fields: !!null ''}]
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    hidden_fields: [opportunity.name_id]
-    listen:
-      Sales Rep: opportunity_owner.name
-    row: 10
-    col: 0
-    width: 9
-    height: 8
   - title: Win Percentage By Deal Size
     name: Win Percentage By Deal Size
     model: block-sales
@@ -279,8 +202,8 @@
     hidden_fields: [opportunity.sort_deal_size]
     listen:
       Sales Rep: opportunity_owner.name
-    row: 10
-    col: 17
+    row: 14
+    col: 8
     width: 7
     height: 8
   - title: Closed Won Opportunities
@@ -323,7 +246,7 @@
     series_types: {}
     listen:
       Sales Rep: opportunity_owner.name
-    row: 18
+    row: 22
     col: 0
     width: 24
     height: 7
@@ -404,8 +327,8 @@
     totals_color: "#808080"
     listen:
       Sales Rep: opportunity_owner.name
-    row: 10
-    col: 9
+    row: 14
+    col: 0
     width: 8
     height: 8
   - title: Open Opportunities
@@ -449,10 +372,10 @@
       opportunity_history_days_in_current_stage.most_recent_stage_change_date]
     listen:
       Sales Rep: opportunity_owner.name
-    row: 25
-    col: 0
-    width: 24
-    height: 7
+    row: 14
+    col: 15
+    width: 9
+    height: 8
   - title: Cumulative Bookings (QTD)
     name: Cumulative Bookings (QTD)
     model: block-sales
@@ -474,6 +397,12 @@
     x_axis_gridlines: false
     y_axis_gridlines: false
     show_view_names: 'true'
+    y_axes: [{label: '', orientation: left, series: [{axisId: opportunity.total_amount,
+            id: opportunity.total_amount, name: Closed Won Amount}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: running_total,
+            id: running_total, name: Running Total}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
@@ -488,9 +417,12 @@
     stacking: ''
     limit_displayed_rows: false
     legend_position: center
-    series_types: {}
+    series_types:
+      running_total: area
     point_style: none
-    show_value_labels: false
+    series_labels:
+      opportunity.total_amount: Closed Won Amount
+    show_value_labels: true
     label_density: 25
     x_axis_scale: time
     y_axis_combined: true
@@ -512,13 +444,84 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    hidden_fields: [opportunity.total_closed_won_new_business_amount, opportunity.total_amount]
+    hidden_fields: [opportunity.total_closed_won_new_business_amount]
     hidden_points_if_no: [is_before_today_2]
     listen:
       Sales Rep: opportunity_owner.name
-    row: 2
-    col: 12
-    width: 12
+    row: 6
+    col: 0
+    width: 15
+    height: 8
+  - title: Biggest Wins (All Time)
+    name: Biggest Wins (All Time)
+    model: block-sales
+    explore: opportunity
+    type: looker_bar
+    fields: [account.logo64, opportunity.total_amount]
+    filters:
+      opportunity.is_won: 'Yes'
+    sorts: [opportunity.total_amount desc]
+    limit: 10
+    column_limit: 50
+    color_application:
+      collection_id: 5f313589-67ce-44ba-b084-ec5107a7bb7e
+      palette_id: be92eae7-de25-46ae-8e4f-21cb0b69a1f3
+      options:
+        steps: 5
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    y_axes: [{label: '', orientation: left, series: [{id: opportunity.total_closed_won_new_business_amount,
+            name: 'Closed Won ACV ', axisId: opportunity.total_closed_won_new_business_amount}],
+        showLabels: false, showValues: false, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    font_size: small
+    series_types: {}
+    point_style: none
+    series_colors:
+      opportunity.total_closed_won_new_business_amount: "#462C9D"
+      opportunity.total_amount: "#C762AD"
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_row_numbers: true
+    truncate_column_names: false
+    subtotals_at_bottom: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: white
+    enable_conditional_formatting: false
+    conditional_formatting: [{type: along a scale..., value: !!null '', background_color: !!null '',
+        font_color: !!null '', color_application: {collection_id: legacy, palette_id: legacy_diverging1},
+        bold: false, italic: false, strikethrough: false, fields: !!null ''}]
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    hidden_fields: [opportunity.name_id]
+    listen:
+      Sales Rep: opportunity_owner.name
+    row: 6
+    col: 15
+    width: 9
     height: 8
   filters:
   - name: Sales Rep
