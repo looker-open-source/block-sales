@@ -1,7 +1,7 @@
 # Sales Block
 
 This repository contains views, explores and dashboards that make up the Sales Block.
-There are 3 dashboards that come with this block: Sales Overivew, Pipeline Management and Sales Rep Performance, with each dashboard focusing on a specific area of the sales process.
+There are 4 dashboards that come with this block: Sales Overivew, Pipeline Management, Manager Overview and Sales Rep Performance, with each dashboard focusing on a specific area of the sales process.
 
 LookML content of this block is remotely included through the Sales Block Config project and is installed through the Marketplace.
 
