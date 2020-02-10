@@ -30,7 +30,7 @@
   "auxiliary_projects": [
     {
       "git_uri": "git://github.com/looker/block-sales-config.git",
-      "git_ref": "17bec0f1512460ab2b93a7adfd5f09c23b2d461b",
+      "git_ref": "0b63a1bcaa4d2fcc78f8958a7a517ecd280286cc",
       "label": "Config Project Name",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
