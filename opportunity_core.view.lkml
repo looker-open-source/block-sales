@@ -53,7 +53,7 @@ view: opportunity_core {
       fiscal_quarter_of_year,
       fiscal_year
     ]
-    sql: DATE(${TABLE}.close_date) ;;
+    sql: ${TABLE}.close_date ;;
   }
 
   dimension: created_by_id {
