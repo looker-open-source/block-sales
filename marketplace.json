@@ -31,7 +31,7 @@
     {
       "git_uri": "git://github.com/looker/block-sales-config.git",
       "git_ref": "0b63a1bcaa4d2fcc78f8958a7a517ecd280286cc",
-      "label": "Config Project Name",
+      "label": "Saleforce Analytics Config",
       "constant_name": "CONFIG_PROJECT_NAME"
     }
   ]
