@@ -263,7 +263,7 @@
     filters:
       opportunity.total_amount: ">0"
     sorts: [opportunity.average_days_to_closed_won desc]
-    limit: 10
+    limit: 12
     column_limit: 50
     color_application:
       collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
@@ -393,7 +393,7 @@
     filters:
       opportunity.count_won: ">0"
     sorts: [opportunity.count_won desc]
-    limit: 50
+    limit: 12
     column_limit: 50
     color_application:
       collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
@@ -523,7 +523,7 @@
     filters:
       opportunity.total_amount: ">0"
     sorts: [opportunity.total_closed_won_amount desc]
-    limit: 20
+    limit: 12
     column_limit: 50
     color_application:
       collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
