@@ -18,9 +18,9 @@ view: manager_facts_core {
         COALESCE(SUM(CASE WHEN opportunity.is_won  THEN opportunity.amount    ELSE NULL END), 0) / COUNT(DISTINCT(opportunity_owner.id)) as total_won_per_rep,
         COALESCE(SUM(CASE WHEN (NOT COALESCE(opportunity.is_closed , FALSE)) AND (opportunity.forecast_category IN ('Pipeline','Forecast','BestCase')) THEN opportunity.amount  ELSE NULL END), 0) / COUNT(DISTINCT(opportunity_owner.id)) as pipeline_per_rep,
         (COUNT(CASE WHEN opportunity.is_won  THEN 1 ELSE NULL END)) / NULLIF((COUNT(CASE WHEN opportunity.is_closed  THEN 1 ELSE NULL END)),0)  AS win_percentage
-      FROM  salesforce.user  AS manager
-      JOIN salesforce.user  AS opportunity_owner ON  manager.id = opportunity_owner.manager_id
-      JOIN salesforce.opportunity  AS opportunity ON opportunity_owner.id = opportunity.owner_id
+      FROM  @{SALESFORCE_SCHEMA}.user  AS manager
+      JOIN @{SALESFORCE_SCHEMA}.user  AS opportunity_owner ON  manager.id = opportunity_owner.manager_id
+      JOIN @{SALESFORCE_SCHEMA}.opportunity  AS opportunity ON opportunity_owner.id = opportunity.owner_id
       WHERE NOT opportunity.is_deleted
       GROUP BY 1,2 ;;
     }
