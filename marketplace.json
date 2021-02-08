@@ -23,7 +23,7 @@
   },
   "models": [
     {
-      "name": "block_sales",
+      "name": "block-sales",
       "connection_constant": "CONNECTION_NAME"
     }
   ],
