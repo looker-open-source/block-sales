@@ -1,0 +1,38 @@
+{
+  "label": "Salesforce Analytics",
+  "category_label": "Models",
+  "branding": {
+    "image_uri": "https://marketplace-api.looker.com/block-icons/salesforce.png",
+    "tagline": "Understand performance, prioritize opportunities, and close more deals with Looker's Salesforce Block."
+  },
+
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    },
+    "SALESFORCE_SCHEMA": {
+      "label": "Salesforce Schema Name"
+    },
+    "SALESFORCE_DOMAIN": {
+    "label": "Salesforce Domain"
+    },
+    "CONFIG_PROJECT_NAME": {
+      "label": "Config Project Name"
+    }
+  },
+  "models": [
+    {
+      "name": "block-sales",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ],
+  "auxiliary_projects": [
+    {
+      "git_uri": "git://github.com/looker/block-sales-config.git",
+      "git_ref": "0b63a1bcaa4d2fcc78f8958a7a517ecd280286cc",
+      "label": "Saleforce Analytics Config",
+      "constant_name": "CONFIG_PROJECT_NAME"
+    }
+  ]
+}
