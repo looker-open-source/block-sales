@@ -4,7 +4,7 @@
   elements:
   - title: Bookings (QTD)
     name: Bookings (QTD)
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_amount, opportunity.close_fiscal_quarter]
@@ -47,7 +47,7 @@
     height: 4
   - title: Closed Won Opps
     name: Closed Won Opps
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.count]
@@ -77,7 +77,7 @@
     height: 4
   - title: Top 10 Reps This Quarter
     name: Top 10 Reps This Quarter
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity_owner.name, opportunity.total_amount]
@@ -162,7 +162,7 @@
     height: 9
   - title: Task Breakdown
     name: Task Breakdown
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [task.created_month, task.calls, task.emails, task.meetings]
@@ -226,7 +226,7 @@
     height: 8
   - title: Closed Deals by Opportunity Type
     name: Closed Deals by Opportunity Type
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [opportunity.close_quarter, opportunity.type, opportunity.total_amount]
@@ -306,7 +306,7 @@
     height: 8
   - title: Top 5 Managers This Quarter
     name: Top 5 Managers This Quarter
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity.total_amount, opportunity_owner.manager]
@@ -391,7 +391,7 @@
     height: 10
   - title: Won Amount Running Total with Win %
     name: Won Amount Running Total with Win %
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_line
     fields: [opportunity.close_week, opportunity.win_percentage, opportunity.total_closed_won_amount]
@@ -451,7 +451,7 @@
     height: 13
   - title: Won Opps (QTD)
     name: Won Opps (QTD)
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity.name, account.industry, opportunity_owner.manager, opportunity.close_date,
@@ -527,7 +527,7 @@
     height: 12
   - title: Bookings by Lead Source
     name: Bookings by Lead Source
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity.lead_source, opportunity.total_amount]
@@ -613,7 +613,7 @@
     height: 8
   - title: Bookings by State
     name: Bookings by State
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_map
     fields: [account.billing_state, opportunity.total_closed_won_amount]
@@ -656,7 +656,7 @@
     height: 10
   - title: Biggest Wins
     name: Biggest Wins
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity.total_amount, account.name]

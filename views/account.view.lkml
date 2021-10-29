@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/account.view"
-
 view: account {
-  extends: [account_config]
-}
-
-view: account_core {
-  extension: required #add this if you re-generate this file
-  sql_table_name: @{SALESFORCE_SCHEMA}.account ;;
+  # sql_table_name: @{SALESFORCE_SCHEMA}.account ;;
 
 ###   Dimensions:
 

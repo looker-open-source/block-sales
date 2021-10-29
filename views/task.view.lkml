@@ -1,12 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/task.view"
 
 view: task {
-  extends: [task_config]
-}
-
-
-view: task_core {
-  extension: required
   sql_table_name: @{SALESFORCE_SCHEMA}.task ;;
 
   dimension: id {
