@@ -1,10 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/owner_opp_sorted.view"
-
 view: owner_opp_sorted {
-  extends: [owner_opp_sorted_config]
-}
-
-view: owner_opp_sorted_core {
   derived_table: {
     explore_source: opportunity {
       column: name { field: opportunity_owner.name }

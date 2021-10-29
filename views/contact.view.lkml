@@ -1,11 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/contact.view"
-
 view: contact {
-  extends: [contact_config]
-}
-
-view: contact_core {
-  extension: required #add this if you re-generate this file
   sql_table_name: @{SALESFORCE_SCHEMA}.contact ;;
 
   dimension: account_id {
@@ -229,10 +222,10 @@ view: contact_core {
     sql: ${TABLE}.last_viewed_date ;;
   }
 
-  dimension: lead_source {
-    type: string
-    sql: ${TABLE}.lead_source ;;
-  }
+  # dimension: lead_source {
+  #   type: string
+  #   sql: ${TABLE}.lead_source ;;
+  # }
 
   dimension: mailing_city {
     type: string
@@ -409,7 +402,6 @@ view: contact_core {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      jigsaw_contact_id,
       name,
       assistant_name,
       first_name,

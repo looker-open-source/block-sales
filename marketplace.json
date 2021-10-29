@@ -16,23 +16,12 @@
     },
     "SALESFORCE_DOMAIN": {
     "label": "Salesforce Domain"
-    },
-    "CONFIG_PROJECT_NAME": {
-      "label": "Config Project Name"
     }
   },
   "models": [
     {
-      "name": "block-sales",
+      "name": "block-sales_v2",
       "connection_constant": "CONNECTION_NAME"
-    }
-  ],
-  "auxiliary_projects": [
-    {
-      "git_uri": "git://github.com/looker/block-sales-config.git",
-      "git_ref": "0b63a1bcaa4d2fcc78f8958a7a517ecd280286cc",
-      "label": "Saleforce Analytics Config",
-      "constant_name": "CONFIG_PROJECT_NAME"
     }
   ]
 }

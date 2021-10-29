@@ -4,7 +4,7 @@
   elements:
   - title: Bookings (QTD)
     name: Bookings (QTD)
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_amount, opportunity.close_fiscal_quarter]
@@ -49,7 +49,7 @@
     height: 4
   - title: Lifetime Bookings
     name: Lifetime Bookings
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_amount]
@@ -74,7 +74,7 @@
     height: 4
   - title: Closed Won Opps
     name: Closed Won Opps
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.count]
@@ -106,7 +106,7 @@
     height: 4
   - title: Pipeline QTD
     name: Pipeline QTD
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_pipeline_amount]
@@ -140,7 +140,7 @@
     height: 4
   - title: Win Percentage By Deal Size
     name: Win Percentage By Deal Size
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_pie
     fields: [opportunity.win_percentage, opportunity.deal_size_tier, opportunity.sort_deal_size]
@@ -208,7 +208,7 @@
     height: 8
   - title: Closed Won Opportunities
     name: Closed Won Opportunities
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity.name, opportunity.close_date, opportunity.days_as_customer,
@@ -252,7 +252,7 @@
     height: 7
   - title: Rep Name
     name: Rep Name
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity_owner.name]
@@ -277,7 +277,7 @@
     height: 2
   - title: Opportunities By Stage
     name: Opportunities By Stage
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [opportunity.stage_name, opportunity.total_amount, opportunity.count]
@@ -333,7 +333,7 @@
     height: 8
   - title: Open Opportunities
     name: Open Opportunities
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
@@ -378,7 +378,7 @@
     height: 8
   - title: Cumulative Bookings (QTD)
     name: Cumulative Bookings (QTD)
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [opportunity.total_amount, opportunity.close_date]
@@ -454,7 +454,7 @@
     height: 8
   - title: Biggest Wins (All Time)
     name: Biggest Wins (All Time)
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [account.logo64, opportunity.total_amount]
@@ -530,7 +530,7 @@
     default_value:
     allow_multiple_values: true
     required: false
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     listens_to_filters: []
     field: opportunity_owner.name

@@ -4,7 +4,7 @@
   elements:
   - title: Total Bookings
     name: Total Bookings
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_amount]
@@ -35,7 +35,7 @@
     height: 3
   - title: Opportunities Won
     name: Opportunities Won
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.close_fiscal_quarter, opportunity.count_won]
@@ -74,7 +74,7 @@
     height: 3
   - title: Rep Performance
     name: Rep Performance
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity_owner.name, opportunity_owner.tenure, opportunity_owner.title,
@@ -125,7 +125,7 @@
     height: 9
   - title: Pipeline Created
     name: Pipeline Created
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_pipeline_amount]
@@ -155,7 +155,7 @@
     height: 3
   - title: Cumulative Bookings By Rep
     name: Cumulative Bookings By Rep
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_area
     fields: [opportunity.close_date, opportunity.total_amount, owner_opp_sorted.name]
@@ -216,7 +216,7 @@
     height: 8
   - title: Win Percentage
     name: Win Percentage
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.close_fiscal_quarter, opportunity.win_percentage]
@@ -256,7 +256,7 @@
     height: 3
   - title: Avg Days To Close By Rep
     name: Avg Days To Close By Rep
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity.average_days_to_closed_won, opportunity_owner.name]
@@ -341,7 +341,7 @@
     height: 8
   - title: Open Opportunities List
     name: Open Opportunities List
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
@@ -386,7 +386,7 @@
     height: 9
   - title: Opportunities Won By Rep
     name: Opportunities Won By Rep
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity_owner.name, opportunity.count_won]
@@ -472,7 +472,7 @@
     height: 8
   - title: Open Opportunities
     name: Open Opportunities
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_scatter
     fields: [opportunity.name, opportunity.days_open, opportunity.total_amount, opportunity_owner.name,
@@ -516,7 +516,7 @@
     height: 8
   - title: Bookings Distribution
     name: Bookings Distribution
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity_owner.name, opportunity.total_closed_won_amount]
@@ -607,7 +607,7 @@
     default_value:
     allow_multiple_values: true
     required: false
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     listens_to_filters: []
     field: opportunity_owner.manager
@@ -617,7 +617,7 @@
     default_value: this quarter
     allow_multiple_values: true
     required: false
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     listens_to_filters: []
     field: opportunity.close_date

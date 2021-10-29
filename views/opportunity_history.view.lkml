@@ -1,12 +1,4 @@
-# # include: "//@{CONFIG_PROJECT_NAME}/opportunity_history.view"
-# include: "//block-sales-config/opportunity.view"
-
 # view: opportunity_history {
-#   extends: [opportunity_history_config]
-# }
-
-# view: opportunity_history_core {
-#   extension: required #add this if you re-generate this file
 # #   sql_table_name: @{SCHEMA_NAME}.opportunity_history ;;
 #   sql_table_name: salesforce.user ;;
 

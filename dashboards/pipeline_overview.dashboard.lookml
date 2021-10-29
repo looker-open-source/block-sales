@@ -4,7 +4,7 @@
   elements:
   - title: Pipeline Created MTD
     name: Pipeline Created MTD
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_pipeline_amount]
@@ -32,7 +32,7 @@
     height: 3
   - title: Pipeline Created QTD
     name: Pipeline Created QTD
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.total_pipeline_amount]
@@ -60,7 +60,7 @@
     height: 3
   - title: Opps by Probability and Close Date
     name: Opps by Probability and Close Date
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [opportunity.probability_group, opportunity.count, opportunity.close_month]
@@ -127,7 +127,7 @@
     height: 9
   - title: Opps in Pipeline
     name: Opps in Pipeline
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.count]
@@ -155,7 +155,7 @@
     height: 3
   - title: Avg Deal Size in Pipeline
     name: Avg Deal Size in Pipeline
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: single_value
     fields: [opportunity.average_amount]
@@ -172,7 +172,7 @@
     height: 3
   - title: List of Opportunities in Pipeline
     name: List of Opportunities in Pipeline
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_grid
     fields: [opportunity.name, opportunity.type, opportunity.created_date, opportunity.close_date,
@@ -217,7 +217,7 @@
     height: 6
   - title: Avg Deal Size in Pipeline by Manager
     name: Avg Deal Size in Pipeline by Manager
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity_owner.manager, opportunity.average_amount]
@@ -268,7 +268,7 @@
     height: 12
   - title: Pipeline By Manager
     name: Pipeline By Manager
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_bar
     fields: [opportunity_owner.manager, opportunity.count, opportunity.total_pipeline_amount]
@@ -329,7 +329,7 @@
     height: 12
   - title: Opps by Stage and Lead Source
     name: Opps by Stage and Lead Source
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_column
     fields: [opportunity.lead_source, opportunity.count, opportunity.stage_name]
@@ -400,7 +400,7 @@
     height: 9
   - title: Opps Slated to Close
     name: Opps Slated to Close
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     type: looker_scatter
     fields: [opportunity.days_open, opportunity.close_date, opportunity.amount, opportunity.name]
@@ -463,7 +463,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     listens_to_filters: []
     field: opportunity_owner.name
@@ -473,7 +473,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: block-sales
+    model: block-sales_v2
     explore: opportunity
     listens_to_filters: []
     field: opportunity_owner.manager

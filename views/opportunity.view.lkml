@@ -1,11 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/opportunity.view"
-
 view: opportunity {
-  extends: [opportunity_config]
-}
-
-view: opportunity_core {
-  extension: required #add this if you re-generate this file
   sql_table_name: @{SALESFORCE_SCHEMA}.opportunity ;;
 
   dimension: id {
@@ -606,12 +599,17 @@ view: opportunity_core {
     drill_fields: [opp_drill_set_closed*]
   }
 
+  dimension: is_pipeline {
+    sql: ${forecast_category} IN ('Pipeline','Forecast','BestCase') ;;
+    type: yesno
+  }
+
 
   ###     Measures:
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    # drill_fields: [detail*]
     label: "Number of Opportunities"
   }
 
@@ -875,9 +873,29 @@ view: opportunity_core {
   set: opp_drill_set_open {
     fields: [opportunity.id, opportunity.name, opportunity_owner.name, account.name, created_date, type, days_as_opportunity, amount]
   }
+
   set: opportunity_exclusion_set {
-    fields: [amount_per_rep, deals_per_rep, percent_of_average_new_deal_size, percent_of_average_sales_cycle,logo64,logo,matches_name_select,first_meeting,percent_of_quota_reached, total_closed_won_new_business_amount_leaderboard, rep_highlight_acv, average_new_deal_size_won_leaderboard, rep_highlight_average_new_deal_size_won]
+    fields: [amount_per_rep
+      ,logo64
+      ,logo
+      ]
   }
+
+  # set: opportunity_exclusion_set {
+  #   fields: [amount_per_rep
+  #         , deals_per_rep
+  #         , percent_of_average_new_deal_size
+  #         , percent_of_average_sales_cycle
+  #         ,logo64
+  #         ,logo
+  #         ,matches_name_select
+  #         ,first_meeting
+  #         ,percent_of_quota_reached
+  #         , total_closed_won_new_business_amount_leaderboard
+  #         , rep_highlight_acv
+  #         , average_new_deal_size_won_leaderboard
+  #         , rep_highlight_average_new_deal_size_won]
+  # }
   }
 
 
