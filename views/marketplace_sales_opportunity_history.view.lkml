@@ -1,4 +1,4 @@
-# view: opportunity_history {
+# view: marketplace_sales_opportunity_history {
 # #   sql_table_name: @{SCHEMA_NAME}.opportunity_history ;;
 #   sql_table_name: salesforce.user ;;
 

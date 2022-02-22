@@ -1,4 +1,4 @@
-view: user {
+view: marketplace_sales_user {
   sql_table_name: @{SALESFORCE_SCHEMA}.user ;;
   dimension: id {
     primary_key: yes
@@ -508,7 +508,7 @@ view: user {
   }
 }
 
-view: manager_facts {
+view: marketplace_sales_manager_facts {
   derived_table: {
     sql:
       SELECT

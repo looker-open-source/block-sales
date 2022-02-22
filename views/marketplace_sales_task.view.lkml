@@ -1,5 +1,5 @@
 
-view: task {
+view: marketplace_sales_task {
   sql_table_name: @{SALESFORCE_SCHEMA}.task ;;
 
   dimension: id {

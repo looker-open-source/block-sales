@@ -2,42 +2,45 @@ include: "/views/*.view"
 
 explore: account {
   view_name: account
+  from: marketplace_sales_account
   sql_always_where: NOT ${account.is_deleted}
     ;;
   #fields: [ALL_FIELDS*, -account_owner.user_exclusion_set*, -creator.user_exclusion_set*, -opportunity.opportunity_exclusion_set*, -quota.quota_exclusion_set*]
   fields: [ALL_FIELDS*, -opportunity.opportunity_exclusion_set*]
 
   join: contact {
+    from: marketplace_sales_contact
     sql_on: ${account.id} = ${contact.account_id} ;;
     relationship: one_to_many
   }
 
   join: creator {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${contact.created_by_id} = ${creator.id} ;;
     relationship: many_to_one
   }
 
   join: account_owner {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${account.owner_id} = ${account_owner.id} ;;
     relationship: many_to_one
   }
 
   join: manager {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${account_owner.manager_id} = ${manager.id};;
     fields: []
     relationship: many_to_one
   }
 
   join: opportunity {
+    from: marketplace_sales_opportunity
     sql_on: ${account.id} = ${opportunity.account_id} ;;
     relationship: one_to_many
   }
 
   join: opportunity_owner {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${opportunity.owner_id} = ${opportunity_owner.id} ;;
     relationship: many_to_one
   }

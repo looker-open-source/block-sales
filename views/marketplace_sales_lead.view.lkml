@@ -1,4 +1,4 @@
-view: lead {
+view: marketplace_sales_lead {
   sql_table_name: @{SALESFORCE_SCHEMA}.lead ;;
 
   dimension: id {

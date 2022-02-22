@@ -1,4 +1,4 @@
-view: opportunity {
+view: marketplace_sales_opportunity {
   sql_table_name: @{SALESFORCE_SCHEMA}.opportunity ;;
 
   dimension: id {
