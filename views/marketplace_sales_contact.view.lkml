@@ -1,4 +1,4 @@
-view: contact {
+view: marketplace_sales_contact {
   sql_table_name: @{SALESFORCE_SCHEMA}.contact ;;
 
   dimension: account_id {

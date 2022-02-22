@@ -1,4 +1,4 @@
-view: account {
+view: marketplace_sales_account {
   sql_table_name: @{SALESFORCE_SCHEMA}.account ;;
 
 ###   Dimensions:

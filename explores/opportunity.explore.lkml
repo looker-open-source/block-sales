@@ -2,39 +2,44 @@ include: "/views/*.view"
 
 explore: opportunity {
   view_name: opportunity
+  from: marketplace_sales_opportunity
 
   fields: [ALL_FIELDS*]
   sql_always_where: NOT ${opportunity.is_deleted} ;;
 
   join: account {
+    from: marketplace_sales_account
     sql_on: ${opportunity.account_id} = ${account.id} ;;
     relationship: many_to_one
   }
   join: account_owner {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${account.owner_id} = ${account_owner.id} ;;
     relationship: many_to_one
   }
   join: campaign {
+    from: marketplace_sales_campaign
     sql_on: ${opportunity.campaign_id} = ${campaign.id} ;;
     relationship: many_to_one
   }
   join: opportunity_owner {
-    from: user
+    from: marketplace_sales_user
     type: full_outer # Full outer here since we want to include reps regardless of whether or not they own an opp
     sql_on: ${opportunity.owner_id} = ${opportunity_owner.id} ;;
     relationship: many_to_one
   }
   join: manager {
-    from: user
+    from: marketplace_sales_user
     sql_on: ${opportunity_owner.manager_id} = ${manager.id} ;;
     relationship: many_to_one
   }
   join: manager_facts {
+    from: marketplace_sales_manager_facts
     sql_on: ${manager.id} = ${manager_facts.id};;
     relationship: one_to_one
   }
   join: task {
+    from: marketplace_sales_task
     sql_on: ${opportunity.id} = ${task.what_id} ;;
     relationship: one_to_many
   }

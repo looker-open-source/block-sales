@@ -1,4 +1,4 @@
-view: campaign {
+view: marketplace_sales_campaign {
   sql_table_name: @{SALESFORCE_SCHEMA}.campaign ;;
 
   dimension: id {
