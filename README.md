@@ -1,5 +1,7 @@
 # Sales Block
 
+This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).
+
 This repository contains views, explores and dashboards that make up the Sales Block.
 
 ## Dashboards
